@@ -1,8 +1,8 @@
 #!/bin/sh
 #Variables
-CLUSTER_NAME="santosh-lab"
+CLUSTER_NAME=$1
 MACHINE_TYPE="c2-standard-8"
-NUM_NODES="5"
+NUM_NODES=$2
 MONITORING_NS="monitoring"
 VOLT_NS="voltdb"
 KAFKA_NS="kafka"
@@ -12,7 +12,7 @@ DOCKER_EMAIL="jadejakajal13@gmail.com"
 MONITORING_VERSION="10.1.0"
 VOLT_DEPLPOYMENTNAME="mydb"
 PROPERTY_FILE="myproperties.yaml"
-LICENSE_FILE="/Users/thanos/Documents/license.xml"
+LICENSE_FILE="/opt/voltdb/voltdb/license.xml"
 COMMANDLOG_ENABLED="false"
 SNAPSHOT_ENABLED="false"
 ZK_SVC="zookeeper.kafka.svc.cluster.local"
@@ -20,7 +20,7 @@ ZK_SVC="zookeeper.kafka.svc.cluster.local"
 #creating a cluster
 #gcloud container clusters create   --machine-type $MACHINE_TYPE  --image-type UBUNTU_CONTAINERD  --num-nodes $NUM_NODES   --cluster-version 1.19.13-gke.1900 $CLUSTER_NAME
 
-gcloud container clusters create  --machine-type $MACHINE_TYPE  --image-type UBUNTU_CONTAINERD  --num-nodes $NUM_NODES    $CLUSTER_NAME
+gcloud container clusters create  --machine-type $MACHINE_TYPE  --image-type UBUNTU_CONTAINERD  --num-nodes $NUM_NODES --zone us-central1-a  $CLUSTER_NAME
 
 
 #CPU pinning properties file
